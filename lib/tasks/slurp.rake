@@ -34,7 +34,7 @@ namespace :slurp do
           t.quantity = row["quantity"]
           t.image = row["image"]
           t.save
-          puts "#{t.product}, #{t.category_name} saved"
+          puts "#{t.product}, #{t.category_id} saved"
         end
 
         puts "There are now #{Item.count} rows in the items table"

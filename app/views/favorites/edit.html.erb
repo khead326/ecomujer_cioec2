@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Favorite #<%= @favorite.id %></h3>
+  <h3>Edit Shopping List Item:  <%= @favorite.item.product %></h3>
 </div>
 
 <div class="row">
@@ -29,20 +29,14 @@
 
       <!-- Label and input for user_id -->
       <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
 
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @favorite.user_id %>">
+        <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @favorite.user_id %>">
       </div>
 
       <!-- Label and input for item_id -->
       <div class="form-group">
-        <label for="item_id" class="control-label">
-          Item
-        </label>
 
-        <input type="text" id="item_id" name="item_id" placeholder="Item" class="form-control" value="<%= @favorite.item_id %>">
+        <input type="hidden" id="item_id" name="item_id" placeholder="Item" class="form-control" value="<%= @favorite.item_id %>">
       </div>
 
       <button class="btn btn-warning">
