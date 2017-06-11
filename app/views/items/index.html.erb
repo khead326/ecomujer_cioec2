@@ -10,13 +10,13 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-          <th>Image</th>
-          <th>Product</th>
+        <th>Product</th>
         <th>Product category</th>
         <th>Origin</th>
         <th>Format</th>
         <th>Price</th>
-        <th>Quantity</th>
+        <th>Quantity Available</th>
+        <th>Add to Shopping List </th>
         <th>Actions</th>
 
       </tr>
@@ -24,7 +24,6 @@
       <% @items.each do |item| %>
       <tr>
 
-        <td><img src="<%= item.image %>"></td>
         <td><%= item.product %></td>
         <td><%= item.category.category_name %></td>
         <td><%= item.origin %></td>
@@ -33,8 +32,6 @@
         <td><%= item.quantity %></td>
 
 <td>
-
-
                   <form action="/create_favorite" method="post">
                     <!-- Hidden input for authenticity token to protect from forgery -->
                     <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -47,7 +44,8 @@
                       <i class="fa fa-heart-o"></i>
                     </button>
                   </form>
-
+</td>
+<td>
           <a href="/items/<%= item.id %>" class="btn btn-primary">Show</a>
           <a href="/items/<%= item.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_item/<%= item.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
