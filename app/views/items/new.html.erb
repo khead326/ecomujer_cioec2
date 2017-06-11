@@ -1,0 +1,95 @@
+<!-- Validation failure messages -->
+<% if @item.errors.any? %>
+  <% @item.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Item</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_item" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for product -->
+      <div class="form-group">
+        <label for="product" class="control-label">
+          Product
+        </label>
+
+        <input type="text" id="product" name="product" placeholder="Product" class="form-control" value="<%= @item.product %>">
+      </div>
+
+      <!-- Label and input for product_category -->
+      <div class="form-group">
+        <label for="category_id" class="control-label">
+          Product Category
+        </label>
+
+        <select name="category_id" class="form-control">
+        <% Category.all.each do |category| %>
+        <option value="<%=category.id%>"><%= category.category_name %></option>
+        <%end%>
+      </select>
+      </div>
+
+      <!-- Label and input for origin -->
+      <div class="form-group">
+        <label for="origin" class="control-label">
+          Origin
+        </label>
+
+        <input type="text" id="origin" name="origin" placeholder="Origin" class="form-control" value="<%= @item.origin %>">
+      </div>
+
+      <!-- Label and input for format -->
+      <div class="form-group">
+        <label for="format" class="control-label">
+          Format
+        </label>
+
+        <input type="text" id="format" name="format" placeholder="Format" class="form-control" value="<%= @item.format %>">
+      </div>
+
+      <!-- Label and input for price -->
+      <div class="form-group">
+        <label for="price" class="control-label">
+          Price
+        </label>
+
+        <input type="text" id="price" name="price" placeholder="Price" class="form-control" value="<%= @item.price %>">
+      </div>
+
+      <!-- Label and input for quantity -->
+      <div class="form-group">
+        <label for="quantity" class="control-label">
+          Quantity
+        </label>
+
+        <input type="text" id="quantity" name="quantity" placeholder="Quantity" class="form-control" value="<%= @item.quantity %>">
+      </div>
+
+      <!-- Label and input for image -->
+      <div class="form-group">
+        <label for="image" class="control-label">
+          Image
+        </label>
+
+        <input type="file" id="image" name="image" placeholder="Add a URL..." class="form-control" value="<%= @item.image %>">
+      </div>
+      
+      <button class="btn btn-success">
+        Create Item
+      </button>
+      or
+      <a href="/items">Cancel</a>
+    </form>
+  </div>
+</div>
